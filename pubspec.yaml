@@ -1,6 +1,6 @@
 name: pikaday_datepicker_angular2
 description: Provides a datepicker as Angular2 component which wrapps the lightweight pikaday js-library.
-version: 1.0.0
+version: 1.0.1
 author: Stephan Schroeder <simon.void+github@gmail.com>
 homepage: https://github.com/simon-void/pikaday_datepicker_angular2
 environment:
@@ -11,4 +11,12 @@ dependencies:
 dev_dependencies:
   browser: ^0.10.0
 transformers:
+### (default) configuration if this package should be used as a library (import) or if the app should be execute as Dart in Dartium
 - angular2
+### configuration if example web folder should be compiled to js
+#- angular2:
+#    platform_directives:
+#    - 'package:angular2/common.dart#COMMON_DIRECTIVES'
+#    platform_pipes:
+#    - 'package:angular2/common.dart#COMMON_PIPES'
+#    entry_points: web/main.dart

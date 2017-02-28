@@ -37,7 +37,7 @@ Import and use **PikadayComponent** into your AngularDart2 component:
 
 ```dart
 import 'package:angular2/core.dart';
-import 'package:pikaday_datepicker/pikaday_angular2.dart';
+import 'package:pikaday_datepicker_angular2/pikaday_datepicker_angular2.dart';
 
 @Component(
     selector: 'my-app',
@@ -52,6 +52,20 @@ import 'package:pikaday_datepicker/pikaday_angular2.dart';
 class AppComponent {
   DateTime selectedDay = new DateTime(2016, 12, 14);
 }
+```
+
+If you want to compile the example under web to js, you have to change the transformer configuration to
+```
+transformers:
+### (default) configuration if this package should be used as a library (import) or if the app should be execute as Dart in Dartium
+#- angular2
+### configuration if example web folder should be compiled to js
+- angular2:
+    platform_directives:
+    - 'package:angular2/common.dart#COMMON_DIRECTIVES'
+    platform_pipes:
+    - 'package:angular2/common.dart#COMMON_PIPES'
+    entry_points: web/main.dart
 ```
 
 ### Basic/Vanilla Dart Usage
