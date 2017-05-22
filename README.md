@@ -3,7 +3,7 @@ PikadayAngular2
 
 ### A Dart Datepicker usable as a AngularDart2 component
 
-* uses [PikadayDart] which wraps a lightweight js-lib ([Pikaday], less than 5kb minified and gzipped)
+* uses [Pikaday] dart-wrapper of a lightweight js-lib with datepicker functionality ([Pikaday.js], less than 5kb minified and gzipped)
 * one optinal dependency, if date format needs to be changed ([Moment.js], less than 25kb minified and gzipped)
 * modular CSS classes for easy styling
 
@@ -17,7 +17,7 @@ Also see the [changelog](CHANGELOG.md)
 
 ### html
 
-Link to the [Pikaday]-js library (with it's css file) and
+Link to the [Pikaday.js]-js library (with it's css file) and
 the optional but highly advisable [Moment.js] library (for advanced date formating) in your index.html-file:
 
 ```html
@@ -70,8 +70,8 @@ transformers:
 
 ### Basic/Vanilla Dart Usage
 
-If you're looking for a datepicker within a plain Dart project (no angular2),
-check out [PikadayDart] package instead.
+If you're looking for a datepicker within a plain Dart project (not with angular),
+check out the [Pikaday] package.
 
 ### Angular2 component - Configuration
 
@@ -95,7 +95,7 @@ PikadayComponent has many useful options:
   - `yearRange` number of years either side (e.g. `10`) or array of upper/lower range (e.g. `[1900,2015]`)
   - `showWeekNumber` show the ISO week number at the head of the row (default `false`)
   - `isRTL` reverse the calendar for right-to-left languages
-  - `i18n` language defaults for month and weekday names (see internationalization example on [Pikaday])
+  - `i18n` language defaults for month and weekday names (see internationalization example on [Pikaday.js])
   - `yearSuffix` additional text to append to the year in the title
   - `showMonthAfterYear` render the month after year in the title (default `false`)
   - `showDaysInNextAndPreviousMonths` render days of the calendar grid that fall in the next or previous months to the current month instead of rendering an empty table cell (default: true)
@@ -105,7 +105,12 @@ PikadayComponent has many useful options:
 
 ### Common problems
 
-- console error msg: **constructor not a function**
+- console error msg: **EXCEPTION: Not a valid JS object**
+```
+STACKTRACE: 
+#0      JsNative.callConstructor (dart:js:1461)
+#1      Pikaday.Pikaday (package:pikaday/pikaday.dart_js_interop_patch.dart:12:30)
+```
 
 The Dart-Wrapper can't access the Pikaday-JS-constructor.
 You probably forgot to link to the js-lib itself in index.html:
@@ -120,12 +125,13 @@ You probably forgot to link to the js-lib itself in index.html:
 
 * Stephan Schröder [GitHub](https://github.com/simon-void)
 
-Thanks to [David Bushell](https://github.com/dbushell) for writing [Pikaday].
+Thanks to [David Bushell](https://github.com/dbushell) for writing [Pikaday.js].
+Thanks to [John Ryan](https://github.com/johnpryan) for writing [Pikaday].
 
 Copyright © 2017 Stephan Schröder | BSD & MIT license
 
-  [PikadayDart]: https://pub.dartlang.org/packages/pikaday_datepicker  
-  [Pikaday]:     https://github.com/dbushell/Pikaday                              "Pikaday"
+  [Pikaday]: https://pub.dartlang.org/packages/pikaday  
+  [Pikaday.js]:     https://github.com/dbushell/Pikaday                              "Pikaday"
   [Moment.js]:   http://momentjs.com/                                             "moment.js"
   [screenshot]:  https://raw.github.com/dbushell/Pikaday/gh-pages/screenshot.png  "Screenshot"
   [issues]:      https://github.com/simon-void/pikaday_component_angular2/issues           "Issues"

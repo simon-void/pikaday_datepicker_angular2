@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.1 - 2017-05-22
+
+- updated README.md
+
 ## 2.1.0 - 2017-05-22
 
 - change backend dependency from pikaday_datepicker to pikaday
