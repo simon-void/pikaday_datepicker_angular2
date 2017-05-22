@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.1.0 - 2017-05-22
+
+- change backend dependency from pikaday_datepicker to pikaday
+- removed deprecated use of EventEmitter
+
 ## 2.0.0 - 2017-05-17
 
 - upgraded to Angular2 version 3.0.0 up

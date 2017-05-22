@@ -1,13 +1,14 @@
 name: pikaday_datepicker_angular2
-description: Provides a datepicker as Angular2 component which wrapps the lightweight pikaday js-library.
-version: 2.0.0
+description: Provides a datepicker as Angular(2 or more) component which wrapps the lightweight pikaday js-library.
+version: 2.1.0
 author: Stephan Schroeder <simon.void+github@gmail.com>
 homepage: https://github.com/simon-void/pikaday_datepicker_angular2
 environment:
   sdk: '>=1.23.0 <2.0.0'
 dependencies:
   angular2: ^3.0.0
-  pikaday_datepicker: '>=2.0.0 <3.0.0'
+  js: ^0.6.1
+  pikaday: ^1.1.0
 dev_dependencies:
   browser: ^0.10.0
 transformers:
