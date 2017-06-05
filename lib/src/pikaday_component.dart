@@ -4,6 +4,7 @@ import 'dart:html';
 import 'package:angular2/core.dart';
 import 'package:js/js.dart';
 import 'package:pikaday/pikaday.dart';
+import 'package:pikaday/pikaday_dart_helpers.dart';
 
 import 'conversion.dart';
 
@@ -112,7 +113,7 @@ class PikadayComponent implements AfterViewInit {
   /// Forwards to [PikadayOptions.yearRange]. Look there for more info.
   @Input()
   void set yearRange(yearRange) {
-      _options.yearRange = yearRangeValue(yearRange);
+    _options.yearRange = yearRangeValue(yearRange);
   }
 
   /// <bool> or <String>. Forwards to [PikadayOptions.showWeekNumber]. Look there for more info.
@@ -178,7 +179,12 @@ class PikadayComponent implements AfterViewInit {
   @override
   ngAfterViewInit() {
     _options.field = querySelector('#$id');
-    _options.onSelect = allowInterop((DateTime day) {
+    _options.onSelect = allowInterop((dateTimeOrDate) {
+      var day = dateTimeOrDate is DateTime
+          ? dateTimeOrDate
+          : new DateTime.fromMillisecondsSinceEpoch(
+              getPikadayMillisecondsSinceEpoch(_pikaday));
+
       if (day != _options.defaultDate) {
         _options.defaultDate = day;
         _dayChange.add(day);

@@ -18,12 +18,15 @@ Also see the [changelog](CHANGELOG.md)
 ### html
 
 Link to the [Pikaday.js]-js library (with it's css file) and
-the optional but highly advisable [Moment.js] library (for advanced date formating) in your index.html-file:
+the optional but highly advisable [Moment.js] library (for advanced date formating) in your index.html-file.
+Currently, you also need to add the pikaday_dart_helpers.js file from the [Pikaday] library
+(or from the web/jsLibs-folder of my demo):
 
 ```html
 <link rel="stylesheet" href="pikaday.css">
 <script src="moment.js"></script>
 <script src="pikaday.js"></script>
+<script src="pikaday_dart_helpers.js"></script>
 ```
 
 Download a local copy of those libs, put them in or under the directory your index.html file is in,
@@ -66,6 +69,7 @@ transformers:
     platform_pipes:
     - 'package:angular2/common.dart#COMMON_PIPES'
     entry_points: web/main.dart
+- dart_to_js_script_rewriter
 ```
 
 ### Basic/Vanilla Dart Usage
@@ -105,19 +109,16 @@ PikadayComponent has many useful options:
 
 ### Common problems
 
-- console error msg: **EXCEPTION: Not a valid JS object**
-```
-STACKTRACE: 
-#0      JsNative.callConstructor (dart:js:1461)
-#1      Pikaday.Pikaday (package:pikaday/pikaday.dart_js_interop_patch.dart:12:30)
-```
+- console error msg: **EXCEPTION: Error: self.Pikaday is not a constructor**
+You forgot to import pikaday.js in your html-file.
+- console error msg: **TypeError: self.getPikadayMillisecondsSinceEpoch is not a function**
+You forgot to import pikaday_dart_helpers.js in your html-file.
 
-The Dart-Wrapper can't access the Pikaday-JS-constructor.
-You probably forgot to link to the js-lib itself in index.html:
 ```html
 <link rel="stylesheet" href="pikaday.css">
 <script src="moment.js"></script>
 <script src="pikaday.js"></script>
+<script src="pikaday_dart_helpers.js"></script>
 ```
 * * *
 
@@ -130,9 +131,9 @@ Thanks to [John Ryan](https://github.com/johnpryan) for writing [Pikaday].
 
 Copyright © 2017 Stephan Schröder | BSD & MIT license
 
-  [Pikaday]: https://pub.dartlang.org/packages/pikaday  
-  [Pikaday.js]:     https://github.com/dbushell/Pikaday                              "Pikaday"
-  [Moment.js]:   http://momentjs.com/                                             "moment.js"
-  [screenshot]:  https://raw.github.com/dbushell/Pikaday/gh-pages/screenshot.png  "Screenshot"
-  [issues]:      https://github.com/simon-void/pikaday_component_angular2/issues           "Issues"
+  [Pikaday]:      https://pub.dartlang.org/packages/pikaday
+  [Pikaday.js]:   https://github.com/dbushell/Pikaday                              "Pikaday"
+  [Moment.js]:    http://momentjs.com/                                             "moment.js"
+  [screenshot]:   https://raw.github.com/dbushell/Pikaday/gh-pages/screenshot.png  "Screenshot"
+  [issues]:       https://github.com/simon-void/pikaday_component_angular2/issues           "Issues"
   

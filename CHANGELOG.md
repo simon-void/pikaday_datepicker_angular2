@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.1.2 - 2017-06-05
+
+- fixed an issue where the selected date wasn't of type DateTime
+(when compiled to js) but Date. Unfortunatly you need to import
+the file pikaday_dart_helpers.js for now
+(until the real issue in package:js is fixed).
+
 ## 2.1.1 - 2017-05-22
 
 - updated README.md
