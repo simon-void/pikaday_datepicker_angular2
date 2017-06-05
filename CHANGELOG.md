@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.4 - 2017-06-05
+
+- directly link to the pikaday_dart_helpers.js file from packages/pikaday/
+
 ## 2.1.3 - 2017-06-05
 
 - forgot to activate the right transformers in 2.1.2

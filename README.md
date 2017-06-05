@@ -19,14 +19,13 @@ Also see the [changelog](CHANGELOG.md)
 
 Link to the [Pikaday.js]-js library (with it's css file) and
 the optional but highly advisable [Moment.js] library (for advanced date formating) in your index.html-file.
-Currently, you also need to add the pikaday_dart_helpers.js file from the [Pikaday] library
-(or from the web/jsLibs-folder of my demo):
+Currently, you also need to import the pikaday_dart_helpers.js file from the [Pikaday] package:
 
 ```html
 <link rel="stylesheet" href="pikaday.css">
 <script src="moment.js"></script>
 <script src="pikaday.js"></script>
-<script src="pikaday_dart_helpers.js"></script>
+<script src="packages/pikaday/pikaday_dart_helpers.js"></script>
 ```
 
 Download a local copy of those libs, put them in or under the directory your index.html file is in,
@@ -118,7 +117,7 @@ You forgot to import pikaday_dart_helpers.js in your html-file.
 <link rel="stylesheet" href="pikaday.css">
 <script src="moment.js"></script>
 <script src="pikaday.js"></script>
-<script src="pikaday_dart_helpers.js"></script>
+<script src="packages/pikaday/pikaday_dart_helpers.js"></script>
 ```
 * * *
 
