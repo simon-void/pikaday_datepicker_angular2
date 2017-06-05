@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.3 - 2017-06-05
+
+- forgot to activate the right transformers in 2.1.2
+
 ## 2.1.2 - 2017-06-05
 
 - fixed an issue where the selected date wasn't of type DateTime
