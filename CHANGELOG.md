@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.2.0 - 2017-09-15
+
+- fixed the min-, max-, and date-setting after translation to js
+- deprecated this package, use the new pikaday_datepicker_angular instead
+
 ## 2.1.4 - 2017-06-05
 
 - directly link to the pikaday_dart_helpers.js file from packages/pikaday/

@@ -1,7 +1,11 @@
 PikadayAngular2
 ========
 
-### A Dart Datepicker usable as a AngularDart2 component
+### Deprecated:
+
+A Dart Datepicker for AngularDart v4 is available as a new package [pikaday_datepicker_angular](https://pub.dartlang.org/packages/pikaday_datepicker_angular).
+
+### A Dart Datepicker usable as a AngularDart v3 component
 
 * uses [Pikaday] dart-wrapper of a lightweight js-lib with datepicker functionality ([Pikaday.js], less than 5kb minified and gzipped)
 * one optinal dependency, if date format needs to be changed ([Moment.js], less than 25kb minified and gzipped)
@@ -21,10 +25,11 @@ Link to the [Pikaday.js]-js library (with it's css file) and
 the optional but highly advisable [Moment.js] library (for advanced date formating) in your index.html-file.
 Currently, you also need to import the pikaday_dart_helpers.js file from the [Pikaday] package:
 
+Assuming you put these files into /web/jsLibs/ the imports look like this:
 ```html
-<link rel="stylesheet" href="pikaday.css">
-<script src="moment.js"></script>
-<script src="pikaday.js"></script>
+<link rel="stylesheet" href="jsLibs/pikaday.css">
+<script src="jsLibs/moment.js"></script>
+<script src="jsLibs/pikaday.js"></script>
 <script src="packages/pikaday/pikaday_dart_helpers.js"></script>
 ```
 
@@ -80,12 +85,11 @@ check out the [Pikaday] package.
 
 PikadayComponent has many useful options:
 - two-way data binding:
-  - `day` the DateTime instance to display/update (replacing `defaultDay` from PikadayParams)
+  - `day` the DateTime instance to display/update (replacing/combining `defaultDay` and `setDefaultDate` from PikadayParams)
 - one-way attributes
   - `cssClasses` setting css classes on input (<input class="{{cssClasses}}>)
   - `placeholder` sets the placeholder of the pikaday-inputfield
 - attributes directly used to initialize PikadayParams
-  - `showDayOnInit` display `defaultDay` in inputfield on startup, otherwise show no date, but use `defaultDay` when opening the picker-dialog
   - `bound` automatically show/hide the datepicker on input field focus (default `true` if `field` is set)
   - `position` preferred position of the datepicker relative to the form field, e.g.: `top right`, `bottom right` **Note:** automatic adjustment may occur to avoid datepicker from being displayed outside the viewport, see (default to 'bottom left')
   - `reposition` can be set to false to not reposition datepicker within the viewport, forcing it to take the configured `position` (default: true)
@@ -114,9 +118,9 @@ You forgot to import pikaday.js in your html-file.
 You forgot to import pikaday_dart_helpers.js in your html-file.
 
 ```html
-<link rel="stylesheet" href="pikaday.css">
-<script src="moment.js"></script>
-<script src="pikaday.js"></script>
+<link rel="stylesheet" href="jsLibs/pikaday.css">
+<script src="jsLibs/moment.js"></script>
+<script src="jsLibs/pikaday.js"></script>
 <script src="packages/pikaday/pikaday_dart_helpers.js"></script>
 ```
 * * *

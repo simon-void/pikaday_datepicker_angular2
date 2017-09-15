@@ -12,7 +12,7 @@ void main() {
     selector: 'showcase-pikadate-component',
     template: '''<pikaday [(day)]="selectedDay" format="DD-MM-YYYY"
                           firstDay="1" minDate="2010-1-1" maxDate="2025-12-31"
-                          placeholder="select a day" showDayOnInit="false">
+                          placeholder="select a day">
                  </pikaday>
                  <div>selectedDay: {{selectedDay | date}}</div>''',
     directives: const [PikadayComponent])

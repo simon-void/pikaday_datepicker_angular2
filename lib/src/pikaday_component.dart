@@ -45,20 +45,16 @@ class PikadayComponent implements AfterViewInit {
   @Output()
   Stream<DateTime> get dayChange => _dayChange.stream;
 
-  /// Forwards to [PikadayOptions.defaultDate]. Look there for more info.
+  /// Combines [PikadayOptions.defaultDate] with [PikadayOptions.setDefaultDate]. Look there for more info.
   @Input()
   void set day(DateTime day) {
     if (_isInitPhase) {
       _options.defaultDate = day;
+      _options.setDefaultDate = day!=null;
     } else {
-      _pikaday.setDate(day);
+      var dayMillies = day?.millisecondsSinceEpoch;
+      setPikadayMillisecondsSinceEpoch(_pikaday, dayMillies);
     }
-  }
-
-  /// <bool> or <String>. Forwards to [PikadayOptions.setDefaultDate]. Look there for more info.
-  @Input()
-  void set showDayOnInit(showDayOnInit) {
-    _options.setDefaultDate = boolValue(showDayOnInit);
   }
 
   /// <bool> or <String>. Forwards to [PikadayOptions.bound]. Look there for more info.
@@ -94,13 +90,25 @@ class PikadayComponent implements AfterViewInit {
   /// <DateTime> or <String> with format YYYY-MM-DD. Forwards to [PikadayOptions.minDate]. Look there for more info.
   @Input()
   void set minDate(minDate) {
-    _options.minDate = dayValue(minDate);
+    final minDateAsDateTime = dayValue(minDate);
+    if (_isInitPhase) {
+      _options.minDate = minDateAsDateTime;
+    } else {
+      var minDateMillies = minDateAsDateTime?.millisecondsSinceEpoch;
+      setPikadayMinDateAsMillisecondsSinceEpoch(_pikaday, minDateMillies);
+    }
   }
 
   /// <DateTime> or <String> with format YYYY-MM-DD. Forwards to [PikadayOptions.maxDate]. Look there for more info.
   @Input()
   void set maxDate(maxDate) {
-    _options.maxDate = dayValue(maxDate);
+    final maxDateAsDateTime = dayValue(maxDate);
+    if (_isInitPhase) {
+      _options.maxDate = maxDateAsDateTime;
+    } else {
+      var maxDateMillies = maxDateAsDateTime?.millisecondsSinceEpoch;
+      setPikadayMaxDateAsMillisecondsSinceEpoch(_pikaday, maxDateMillies);
+    }
   }
 
   /// Forwards to [PikadayOptions.disableWeekends]. Look there for more info.
@@ -192,5 +200,29 @@ class PikadayComponent implements AfterViewInit {
     });
 
     _pikaday = new Pikaday(_options);
+
+    // Currently Dart's DateTime is not correctly mapped to JS's Date
+    // so they are converted to millies as transferred as int values.
+    workaroundDateTimeConversionIssue(
+        DateTime day,
+        DateTime minDate,
+        DateTime maxDate,
+        ) {
+      if(day!=null) {
+        var millies = day.millisecondsSinceEpoch;
+        setPikadayMillisecondsSinceEpoch(_pikaday, millies);
+      }
+      if(minDate!=null) {
+        var millies = minDate.millisecondsSinceEpoch;
+        setPikadayMinDateAsMillisecondsSinceEpoch(_pikaday, millies);
+      }
+      if(maxDate!=null) {
+        var millies = maxDate.millisecondsSinceEpoch;
+        setPikadayMaxDateAsMillisecondsSinceEpoch(_pikaday, millies);
+      }
+    }
+    workaroundDateTimeConversionIssue(
+        _options.defaultDate, _options.minDate, _options.maxDate
+    );
   }
 }
